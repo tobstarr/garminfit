@@ -90,7 +90,7 @@ pub fn generate_module(
         impl types::field::Field for Field<profile::base::Float64> {
             type Value = f64;
 
-            fn value(&self) -> Self::Value {
+            pub fn value(&self) -> Self::Value {
                 self.value.0 / self.scale.unwrap_or(1.0) - self.offset.unwrap_or(0.0)
             }
         }
