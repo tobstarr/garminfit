@@ -266,8 +266,8 @@ pub fn extract(sheet: &Sheet) -> Vec<Type> {
 /// the "Types" worksheet.
 #[derive(Debug)]
 enum Row<'a> {
-    Header { type_name: String, base_type: String, comment:   Option<String> },
-    Value { name:    String, value:   u64, comment: Option<String> },
+    Header { type_name: String, base_type: String, comment: Option<String> },
+    Value { name: String, value: u64, comment: Option<String> },
     Empty,
 
     // Catch unknown formats,

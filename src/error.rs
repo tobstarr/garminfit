@@ -140,7 +140,7 @@ pub enum ErrorKind {
     /// Encountered an unknown base type identifier.
     UnknownBaseType { type_id: u8 },
     /// Encountered an unknown type identifier.
-    UnknownType { type_name: String, type_id:   usize },
+    UnknownType { type_name: String, type_id: usize },
     /// Bad file magic.
     NotFit,
     /// Encountered an unknown file architecture.

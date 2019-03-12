@@ -1,6 +1,4 @@
-#![doc = "Generated for FIT SDK profile version: "]
-#![doc = "20.66.00"]
-use byteorder::ByteOrder;
+# ! [ doc = "Generated for FIT SDK profile version: " ] # ! [ doc = "20.66.00" ]use byteorder::ByteOrder;
 use error;
 use profile;
 use types;
@@ -15,7 +13,7 @@ pub struct Field<T> {
 impl types::field::Field for Field<profile::base::Float64> {
     type Value = f64;
 
-    fn value(&self) -> Self::Value {
+    pub fn value(&self) -> Self::Value {
         self.value.0 / self.scale.unwrap_or(1.0) - self.offset.unwrap_or(0.0)
     }
 }
@@ -107,7 +105,7 @@ pub enum Message {
     FieldDescription(FieldDescription),
     DeveloperDataId(DeveloperDataId),
     DiveSummary(DiveSummary),
-    Unknown { data:          Vec<u8>, mesg_num:      u16, field_def_num: u8 },
+    Unknown { data: Vec<u8>, mesg_num: u16, field_def_num: u8 },
 }
 impl Message {
     pub(crate) fn decode<T: ByteOrder>(
@@ -525,7 +523,7 @@ impl FileId {
 pub enum FileCreator {
     SoftwareVersion(Field<profile::base::Uint16>),
     HardwareVersion(Field<profile::base::Uint8>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl FileCreator {
     pub(crate) fn decode<T: ByteOrder>(
@@ -659,7 +657,7 @@ pub enum Software {
     MessageIndex(Field<profile::types::MessageIndex>),
     Version(Field<profile::base::Uint16>),
     PartNumber(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl Software {
     pub(crate) fn decode<T: ByteOrder>(
@@ -704,7 +702,7 @@ impl Software {
 pub enum SlaveDevice {
     Manufacturer(Field<profile::types::Manufacturer>),
     Product(Field<profile::base::Uint16>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl SlaveDevice {
     pub(crate) fn decode<T: ByteOrder>(
@@ -809,7 +807,7 @@ pub enum FileCapabilities {
     Directory(Field<profile::base::Utf8String>),
     MaxCount(Field<profile::base::Uint16>),
     MaxSize(Field<profile::base::Uint32>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl FileCapabilities {
     pub(crate) fn decode<T: ByteOrder>(
@@ -881,7 +879,7 @@ pub enum MesgCapabilities {
     MesgNum(Field<profile::types::MesgNum>),
     CountType(Field<profile::types::MesgCount>),
     Count(Field<profile::base::Uint16>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl MesgCapabilities {
     pub(crate) fn decode<T: ByteOrder>(
@@ -945,7 +943,7 @@ pub enum FieldCapabilities {
     MesgNum(Field<profile::types::MesgNum>),
     FieldNum(Field<profile::base::Uint8>),
     Count(Field<profile::base::Uint16>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl FieldCapabilities {
     pub(crate) fn decode<T: ByteOrder>(
@@ -1577,7 +1575,7 @@ pub enum HrmProfile {
     HrmAntId(Field<profile::base::Uint16z>),
     LogHrv(Field<profile::base::Bool>),
     HrmAntIdTransType(Field<profile::base::Uint8z>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl HrmProfile {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2192,7 +2190,7 @@ pub enum WatchfaceSettings {
     MessageIndex(Field<profile::types::MessageIndex>),
     Mode(Field<profile::types::WatchfaceMode>),
     Layout(Field<profile::base::Bytes>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl WatchfaceSettings {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2235,8 +2233,9 @@ impl WatchfaceSettings {
 }
 #[derive(Debug)]
 pub enum OhrSettings {
+    Timestamp(Field<profile::types::DateTime>),
     Enabled(Field<profile::types::Switch>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl OhrSettings {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2244,6 +2243,14 @@ impl OhrSettings {
         field_def_num: u8,
     ) -> error::Result<Self> {
         match field_def_num {
+            253 => {
+                Ok(OhrSettings::Timestamp(Field {
+                    value:  profile::types::DateTime::decode::<T>(buffer)?,
+                    scale:  None,
+                    offset: None,
+                    units:  Some("s"),
+                }))
+            },
             0 => {
                 Ok(OhrSettings::Enabled(Field {
                     value:  profile::types::Switch::decode::<T>(buffer)?,
@@ -2268,7 +2275,7 @@ pub enum ZonesTarget {
     FunctionalThresholdPower(Field<profile::base::Uint16>),
     HrCalcType(Field<profile::types::HrZoneCalc>),
     PwrCalcType(Field<profile::types::PwrZoneCalc>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl ZonesTarget {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2330,7 +2337,7 @@ pub enum Sport {
     Sport(Field<profile::types::Sport>),
     SubSport(Field<profile::types::SubSport>),
     Name(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl Sport {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2376,7 +2383,7 @@ pub enum HrZone {
     MessageIndex(Field<profile::types::MessageIndex>),
     HighBpm(Field<profile::base::Uint8>),
     Name(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl HrZone {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2422,7 +2429,7 @@ pub enum SpeedZone {
     MessageIndex(Field<profile::types::MessageIndex>),
     HighValue(Field<profile::base::Uint16>),
     Name(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl SpeedZone {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2468,7 +2475,7 @@ pub enum CadenceZone {
     MessageIndex(Field<profile::types::MessageIndex>),
     HighValue(Field<profile::base::Uint8>),
     Name(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl CadenceZone {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2514,7 +2521,7 @@ pub enum PowerZone {
     MessageIndex(Field<profile::types::MessageIndex>),
     HighValue(Field<profile::base::Uint16>),
     Name(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl PowerZone {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2561,7 +2568,7 @@ pub enum MetZone {
     HighBpm(Field<profile::base::Uint8>),
     Calories(Field<profile::base::Uint16>),
     FatCalories(Field<profile::base::Uint8>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl MetZone {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2933,7 +2940,7 @@ pub enum DiveGas {
     HeliumContent(Field<profile::base::Uint8>),
     OxygenContent(Field<profile::base::Uint8>),
     Status(Field<profile::types::DiveGasStatus>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl DiveGas {
     pub(crate) fn decode<T: ByteOrder>(
@@ -2997,7 +3004,7 @@ pub enum Goal {
     RecurrenceValue(Field<profile::base::Uint16>),
     Enabled(Field<profile::base::Bool>),
     Source(Field<profile::types::GoalSource>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl Goal {
     pub(crate) fn decode<T: ByteOrder>(
@@ -6574,7 +6581,7 @@ pub enum TrainingFile {
     Product(Field<profile::base::Uint16>),
     SerialNumber(Field<profile::base::Uint32z>),
     TimeCreated(Field<profile::types::DateTime>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl TrainingFile {
     pub(crate) fn decode<T: ByteOrder>(
@@ -8494,7 +8501,7 @@ pub enum Course {
     Name(Field<profile::base::Utf8String>),
     Capabilities(Field<profile::types::CourseCapabilities>),
     SubSport(Field<profile::types::SubSport>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl Course {
     pub(crate) fn decode<T: ByteOrder>(
@@ -8555,7 +8562,7 @@ pub enum CoursePoint {
     Type(Field<profile::types::CoursePoint>),
     Name(Field<profile::base::Utf8String>),
     Favorite(Field<profile::base::Bool>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl CoursePoint {
     pub(crate) fn decode<T: ByteOrder>(
@@ -9989,7 +9996,7 @@ pub enum WorkoutSession {
     FirstStepIndex(Field<profile::base::Uint16>),
     PoolLength(Field<profile::base::Uint16>),
     PoolLengthUnit(Field<profile::types::DisplayMeasure>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl WorkoutSession {
     pub(crate) fn decode<T: ByteOrder>(
@@ -10081,7 +10088,7 @@ pub enum WorkoutStep {
     ExerciseName(Field<profile::base::Uint16>),
     ExerciseWeight(Field<profile::base::Uint16>),
     WeightDisplayUnit(Field<profile::types::FitBaseUnit>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl WorkoutStep {
     pub(crate) fn decode<T: ByteOrder>(
@@ -10230,7 +10237,7 @@ pub enum ExerciseTitle {
     ExerciseCategory(Field<profile::types::ExerciseCategory>),
     ExerciseName(Field<profile::base::Uint16>),
     WktStepName(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl ExerciseTitle {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11143,7 +11150,7 @@ pub enum Hr {
     FilteredBpm(Field<profile::base::Uint8>),
     EventTimestamp(Field<profile::base::Uint32>),
     EventTimestamp12(Field<profile::base::Bytes>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl Hr {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11320,7 +11327,7 @@ pub enum AntChannelId {
     DeviceNumber(Field<profile::base::Uint16z>),
     TransmissionType(Field<profile::base::Uint8z>),
     DeviceIndex(Field<profile::types::DeviceIndex>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl AntChannelId {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11385,7 +11392,7 @@ pub enum AntRx {
     MesgData(Field<profile::base::Bytes>),
     ChannelNumber(Field<profile::base::Uint8>),
     Data(Field<profile::base::Bytes>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl AntRx {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11458,7 +11465,7 @@ pub enum AntTx {
     MesgData(Field<profile::base::Bytes>),
     ChannelNumber(Field<profile::base::Uint8>),
     Data(Field<profile::base::Bytes>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl AntTx {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11590,7 +11597,7 @@ pub enum ExdDataFieldConfiguration {
     ConceptCount(Field<profile::base::Uint8>),
     DisplayType(Field<profile::types::ExdDisplayType>),
     Title(Field<profile::base::Utf8String>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl ExdDataFieldConfiguration {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11670,7 +11677,7 @@ pub enum ExdDataConceptConfiguration {
     Qualifier(Field<profile::types::ExdQualifiers>),
     Descriptor(Field<profile::types::ExdDescriptors>),
     IsSigned(Field<profile::base::Bool>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl ExdDataConceptConfiguration {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11794,7 +11801,7 @@ pub enum FieldDescription {
     FitBaseUnitId(Field<profile::types::FitBaseUnit>),
     NativeMesgNum(Field<profile::types::MesgNum>),
     NativeFieldNum(Field<profile::base::Uint8>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl FieldDescription {
     pub(crate) fn decode<T: ByteOrder>(
@@ -11931,7 +11938,7 @@ pub enum DeveloperDataId {
     ManufacturerId(Field<profile::types::Manufacturer>),
     DeveloperDataIndex(Field<profile::base::Uint8>),
     ApplicationVersion(Field<profile::base::Uint32>),
-    Unknown { data:          Vec<u8>, field_def_num: u8 },
+    Unknown { data: Vec<u8>, field_def_num: u8 },
 }
 impl DeveloperDataId {
     pub(crate) fn decode<T: ByteOrder>(

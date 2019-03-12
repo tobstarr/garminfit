@@ -1442,7 +1442,7 @@ pub enum SubSport {
     SkateSkiing = 42,
     #[doc = "Training"]
     Yoga = 43,
-    #[doc = "Training"]
+    #[doc = "Fitness Equipment"]
     Pilates = 44,
     #[doc = "Run"]
     IndoorRunning = 45,
@@ -2456,6 +2456,9 @@ pub enum Manufacturer {
     JohnsonHealthTech = 122,
     PolarElectro = 123,
     Seesense = 124,
+    NciTechnology = 125,
+    Iqsquare = 126,
+    Leomo = 127,
     Development = 255,
     Healthandlife = 257,
     Lezyne = 258,
@@ -2498,6 +2501,11 @@ pub enum Manufacturer {
     Shapelog = 291,
     Dabuziduo = 292,
     Jetblack = 293,
+    Coros = 294,
+    Virtugo = 295,
+    Velosense = 296,
+    Cycligentinc = 297,
+    Trailforks = 298,
     Actigraphcorp = 5759,
     Unknown,
 }
@@ -2626,6 +2634,9 @@ impl Manufacturer {
             122 => Ok(Manufacturer::JohnsonHealthTech),
             123 => Ok(Manufacturer::PolarElectro),
             124 => Ok(Manufacturer::Seesense),
+            125 => Ok(Manufacturer::NciTechnology),
+            126 => Ok(Manufacturer::Iqsquare),
+            127 => Ok(Manufacturer::Leomo),
             255 => Ok(Manufacturer::Development),
             257 => Ok(Manufacturer::Healthandlife),
             258 => Ok(Manufacturer::Lezyne),
@@ -2664,6 +2675,11 @@ impl Manufacturer {
             291 => Ok(Manufacturer::Shapelog),
             292 => Ok(Manufacturer::Dabuziduo),
             293 => Ok(Manufacturer::Jetblack),
+            294 => Ok(Manufacturer::Coros),
+            295 => Ok(Manufacturer::Virtugo),
+            296 => Ok(Manufacturer::Velosense),
+            297 => Ok(Manufacturer::Cycligentinc),
+            298 => Ok(Manufacturer::Trailforks),
             5759 => Ok(Manufacturer::Actigraphcorp),
             _ => Ok(Manufacturer::Unknown),
         }
@@ -3030,6 +3046,7 @@ pub enum AntplusDeviceType {
     BikeLightShared = 36,
     Exd = 38,
     BikeRadar = 40,
+    BikeAero = 46,
     WeightScale = 119,
     HeartRate = 120,
     BikeSpeedCadence = 121,
@@ -3059,6 +3076,7 @@ impl AntplusDeviceType {
             36 => Ok(AntplusDeviceType::BikeLightShared),
             38 => Ok(AntplusDeviceType::Exd),
             40 => Ok(AntplusDeviceType::BikeRadar),
+            46 => Ok(AntplusDeviceType::BikeAero),
             119 => Ok(AntplusDeviceType::WeightScale),
             120 => Ok(AntplusDeviceType::HeartRate),
             121 => Ok(AntplusDeviceType::BikeSpeedCadence),
@@ -5598,6 +5616,33 @@ pub enum CoreExerciseName {
     OverheadWalk = 43,
     Inchworm = 44,
     WeightedModifiedFrontLever = 45,
+    RussianTwist = 46,
+    AbdominalLegRotations = 47,
+    ArmAndLegExtensionOnKnees = 48,
+    Bicycle = 49,
+    BicepCurlWithLegExtension = 50,
+    CatCow = 51,
+    Corkscrew = 52,
+    CrissCross = 53,
+    CrissCrossWithBall = 54,
+    DoubleLegStretch = 55,
+    KneeFolds = 56,
+    LowerLift = 57,
+    NeckPull = 58,
+    PelvicClocks = 59,
+    RollOver = 60,
+    RollUp = 61,
+    Rolling = 62,
+    Rowing1 = 63,
+    Rowing2 = 64,
+    Scissors = 65,
+    SingleLegCircles = 66,
+    SingleLegStretch = 67,
+    SnakeTwist1And2 = 68,
+    Swan = 69,
+    Swimming = 70,
+    Teaser = 71,
+    TheHundred = 72,
     Unknown,
 }
 impl CoreExerciseName {
@@ -5650,6 +5695,33 @@ impl CoreExerciseName {
             43 => Ok(CoreExerciseName::OverheadWalk),
             44 => Ok(CoreExerciseName::Inchworm),
             45 => Ok(CoreExerciseName::WeightedModifiedFrontLever),
+            46 => Ok(CoreExerciseName::RussianTwist),
+            47 => Ok(CoreExerciseName::AbdominalLegRotations),
+            48 => Ok(CoreExerciseName::ArmAndLegExtensionOnKnees),
+            49 => Ok(CoreExerciseName::Bicycle),
+            50 => Ok(CoreExerciseName::BicepCurlWithLegExtension),
+            51 => Ok(CoreExerciseName::CatCow),
+            52 => Ok(CoreExerciseName::Corkscrew),
+            53 => Ok(CoreExerciseName::CrissCross),
+            54 => Ok(CoreExerciseName::CrissCrossWithBall),
+            55 => Ok(CoreExerciseName::DoubleLegStretch),
+            56 => Ok(CoreExerciseName::KneeFolds),
+            57 => Ok(CoreExerciseName::LowerLift),
+            58 => Ok(CoreExerciseName::NeckPull),
+            59 => Ok(CoreExerciseName::PelvicClocks),
+            60 => Ok(CoreExerciseName::RollOver),
+            61 => Ok(CoreExerciseName::RollUp),
+            62 => Ok(CoreExerciseName::Rolling),
+            63 => Ok(CoreExerciseName::Rowing1),
+            64 => Ok(CoreExerciseName::Rowing2),
+            65 => Ok(CoreExerciseName::Scissors),
+            66 => Ok(CoreExerciseName::SingleLegCircles),
+            67 => Ok(CoreExerciseName::SingleLegStretch),
+            68 => Ok(CoreExerciseName::SnakeTwist1And2),
+            69 => Ok(CoreExerciseName::Swan),
+            70 => Ok(CoreExerciseName::Swimming),
+            71 => Ok(CoreExerciseName::Teaser),
+            72 => Ok(CoreExerciseName::TheHundred),
             _ => Ok(CoreExerciseName::Unknown),
         }
     }
@@ -5740,6 +5812,7 @@ pub enum CrunchExerciseName {
     ToesToBar = 81,
     WeightedToesToBar = 82,
     Crunch = 83,
+    StraightLegCrunchWithBall = 84,
     Unknown,
 }
 impl CrunchExerciseName {
@@ -5836,6 +5909,7 @@ impl CrunchExerciseName {
             81 => Ok(CrunchExerciseName::ToesToBar),
             82 => Ok(CrunchExerciseName::WeightedToesToBar),
             83 => Ok(CrunchExerciseName::Crunch),
+            84 => Ok(CrunchExerciseName::StraightLegCrunchWithBall),
             _ => Ok(CrunchExerciseName::Unknown),
         }
     }
@@ -6006,6 +6080,8 @@ pub enum FlyeExerciseName {
     KneelingRearFlye = 5,
     SingleArmStandingCableReverseFlye = 6,
     SwissBallDumbbellFlye = 7,
+    ArmRotations = 8,
+    HugATree = 9,
     Unknown,
 }
 impl FlyeExerciseName {
@@ -6020,6 +6096,8 @@ impl FlyeExerciseName {
             5 => Ok(FlyeExerciseName::KneelingRearFlye),
             6 => Ok(FlyeExerciseName::SingleArmStandingCableReverseFlye),
             7 => Ok(FlyeExerciseName::SwissBallDumbbellFlye),
+            8 => Ok(FlyeExerciseName::ArmRotations),
+            9 => Ok(FlyeExerciseName::HugATree),
             _ => Ok(FlyeExerciseName::Unknown),
         }
     }
@@ -6069,12 +6147,19 @@ pub enum HipRaiseExerciseName {
     SingleLegHipRaiseWithHeadOnBosuBall = 40,
     WeightedSingleLegHipRaiseWithHeadOnBosuBall = 41,
     WeightedClamBridge = 42,
+    SingleLegSwissBallHipRaiseAndLegCurl = 43,
+    Clams = 44,
+    InnerThighCircles = 45,
+    InnerThighSideLift = 46,
+    LegCircles = 47,
+    LegLift = 48,
+    LegLiftInExternalRotation = 49,
     Unknown,
 }
 impl HipRaiseExerciseName {
     pub(crate) fn decode<T: ByteOrder>(buffer: &[u8]) -> error::Result<Self> {
         let base_value = profile::base::Uint16::decode::<T>(buffer)?;
-        match base_value . 0 { 0 => Ok ( HipRaiseExerciseName :: BarbellHipThrustOnFloor ) , 1 => Ok ( HipRaiseExerciseName :: BarbellHipThrustWithBench ) , 2 => Ok ( HipRaiseExerciseName :: BentKneeSwissBallReverseHipRaise ) , 3 => Ok ( HipRaiseExerciseName :: WeightedBentKneeSwissBallReverseHipRaise ) , 4 => Ok ( HipRaiseExerciseName :: BridgeWithLegExtension ) , 5 => Ok ( HipRaiseExerciseName :: WeightedBridgeWithLegExtension ) , 6 => Ok ( HipRaiseExerciseName :: ClamBridge ) , 7 => Ok ( HipRaiseExerciseName :: FrontKickTabletop ) , 8 => Ok ( HipRaiseExerciseName :: WeightedFrontKickTabletop ) , 9 => Ok ( HipRaiseExerciseName :: HipExtensionAndCross ) , 10 => Ok ( HipRaiseExerciseName :: WeightedHipExtensionAndCross ) , 11 => Ok ( HipRaiseExerciseName :: HipRaise ) , 12 => Ok ( HipRaiseExerciseName :: WeightedHipRaise ) , 13 => Ok ( HipRaiseExerciseName :: HipRaiseWithFeetOnSwissBall ) , 14 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithFeetOnSwissBall ) , 15 => Ok ( HipRaiseExerciseName :: HipRaiseWithHeadOnBosuBall ) , 16 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithHeadOnBosuBall ) , 17 => Ok ( HipRaiseExerciseName :: HipRaiseWithHeadOnSwissBall ) , 18 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithHeadOnSwissBall ) , 19 => Ok ( HipRaiseExerciseName :: HipRaiseWithKneeSqueeze ) , 20 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithKneeSqueeze ) , 21 => Ok ( HipRaiseExerciseName :: InclineRearLegExtension ) , 22 => Ok ( HipRaiseExerciseName :: WeightedInclineRearLegExtension ) , 23 => Ok ( HipRaiseExerciseName :: KettlebellSwing ) , 24 => Ok ( HipRaiseExerciseName :: MarchingHipRaise ) , 25 => Ok ( HipRaiseExerciseName :: WeightedMarchingHipRaise ) , 26 => Ok ( HipRaiseExerciseName :: MarchingHipRaiseWithFeetOnASwissBall ) , 27 => Ok ( HipRaiseExerciseName :: WeightedMarchingHipRaiseWithFeetOnASwissBall ) , 28 => Ok ( HipRaiseExerciseName :: ReverseHipRaise ) , 29 => Ok ( HipRaiseExerciseName :: WeightedReverseHipRaise ) , 30 => Ok ( HipRaiseExerciseName :: SingleLegHipRaise ) , 31 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaise ) , 32 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnBench ) , 33 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnBench ) , 34 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnBosuBall ) , 35 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnBosuBall ) , 36 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnFoamRoller ) , 37 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnFoamRoller ) , 38 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnMedicineBall ) , 39 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnMedicineBall ) , 40 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithHeadOnBosuBall ) , 41 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithHeadOnBosuBall ) , 42 => Ok ( HipRaiseExerciseName :: WeightedClamBridge ) , _ => Ok ( HipRaiseExerciseName :: Unknown ) , }
+        match base_value . 0 { 0 => Ok ( HipRaiseExerciseName :: BarbellHipThrustOnFloor ) , 1 => Ok ( HipRaiseExerciseName :: BarbellHipThrustWithBench ) , 2 => Ok ( HipRaiseExerciseName :: BentKneeSwissBallReverseHipRaise ) , 3 => Ok ( HipRaiseExerciseName :: WeightedBentKneeSwissBallReverseHipRaise ) , 4 => Ok ( HipRaiseExerciseName :: BridgeWithLegExtension ) , 5 => Ok ( HipRaiseExerciseName :: WeightedBridgeWithLegExtension ) , 6 => Ok ( HipRaiseExerciseName :: ClamBridge ) , 7 => Ok ( HipRaiseExerciseName :: FrontKickTabletop ) , 8 => Ok ( HipRaiseExerciseName :: WeightedFrontKickTabletop ) , 9 => Ok ( HipRaiseExerciseName :: HipExtensionAndCross ) , 10 => Ok ( HipRaiseExerciseName :: WeightedHipExtensionAndCross ) , 11 => Ok ( HipRaiseExerciseName :: HipRaise ) , 12 => Ok ( HipRaiseExerciseName :: WeightedHipRaise ) , 13 => Ok ( HipRaiseExerciseName :: HipRaiseWithFeetOnSwissBall ) , 14 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithFeetOnSwissBall ) , 15 => Ok ( HipRaiseExerciseName :: HipRaiseWithHeadOnBosuBall ) , 16 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithHeadOnBosuBall ) , 17 => Ok ( HipRaiseExerciseName :: HipRaiseWithHeadOnSwissBall ) , 18 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithHeadOnSwissBall ) , 19 => Ok ( HipRaiseExerciseName :: HipRaiseWithKneeSqueeze ) , 20 => Ok ( HipRaiseExerciseName :: WeightedHipRaiseWithKneeSqueeze ) , 21 => Ok ( HipRaiseExerciseName :: InclineRearLegExtension ) , 22 => Ok ( HipRaiseExerciseName :: WeightedInclineRearLegExtension ) , 23 => Ok ( HipRaiseExerciseName :: KettlebellSwing ) , 24 => Ok ( HipRaiseExerciseName :: MarchingHipRaise ) , 25 => Ok ( HipRaiseExerciseName :: WeightedMarchingHipRaise ) , 26 => Ok ( HipRaiseExerciseName :: MarchingHipRaiseWithFeetOnASwissBall ) , 27 => Ok ( HipRaiseExerciseName :: WeightedMarchingHipRaiseWithFeetOnASwissBall ) , 28 => Ok ( HipRaiseExerciseName :: ReverseHipRaise ) , 29 => Ok ( HipRaiseExerciseName :: WeightedReverseHipRaise ) , 30 => Ok ( HipRaiseExerciseName :: SingleLegHipRaise ) , 31 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaise ) , 32 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnBench ) , 33 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnBench ) , 34 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnBosuBall ) , 35 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnBosuBall ) , 36 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnFoamRoller ) , 37 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnFoamRoller ) , 38 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithFootOnMedicineBall ) , 39 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithFootOnMedicineBall ) , 40 => Ok ( HipRaiseExerciseName :: SingleLegHipRaiseWithHeadOnBosuBall ) , 41 => Ok ( HipRaiseExerciseName :: WeightedSingleLegHipRaiseWithHeadOnBosuBall ) , 42 => Ok ( HipRaiseExerciseName :: WeightedClamBridge ) , 43 => Ok ( HipRaiseExerciseName :: SingleLegSwissBallHipRaiseAndLegCurl ) , 44 => Ok ( HipRaiseExerciseName :: Clams ) , 45 => Ok ( HipRaiseExerciseName :: InnerThighCircles ) , 46 => Ok ( HipRaiseExerciseName :: InnerThighSideLift ) , 47 => Ok ( HipRaiseExerciseName :: LegCircles ) , 48 => Ok ( HipRaiseExerciseName :: LegLift ) , 49 => Ok ( HipRaiseExerciseName :: LegLiftInExternalRotation ) , _ => Ok ( HipRaiseExerciseName :: Unknown ) , }
     }
 }
 #[derive(Debug)]
@@ -6218,12 +6303,15 @@ pub enum HyperextensionExerciseName {
     WeightedSwissBallHyperextension = 34,
     SwissBallOppositeArmAndLegLift = 35,
     WeightedSwissBallOppositeArmAndLegLift = 36,
+    SupermanOnSwissBall = 37,
+    Cobra = 38,
+    SupineFloorBarre = 39,
     Unknown,
 }
 impl HyperextensionExerciseName {
     pub(crate) fn decode<T: ByteOrder>(buffer: &[u8]) -> error::Result<Self> {
         let base_value = profile::base::Uint16::decode::<T>(buffer)?;
-        match base_value . 0 { 0 => Ok ( HyperextensionExerciseName :: BackExtensionWithOppositeArmAndLegReach ) , 1 => Ok ( HyperextensionExerciseName :: WeightedBackExtensionWithOppositeArmAndLegReach ) , 2 => Ok ( HyperextensionExerciseName :: BaseRotations ) , 3 => Ok ( HyperextensionExerciseName :: WeightedBaseRotations ) , 4 => Ok ( HyperextensionExerciseName :: BentKneeReverseHyperextension ) , 5 => Ok ( HyperextensionExerciseName :: WeightedBentKneeReverseHyperextension ) , 6 => Ok ( HyperextensionExerciseName :: HollowHoldAndRoll ) , 7 => Ok ( HyperextensionExerciseName :: WeightedHollowHoldAndRoll ) , 8 => Ok ( HyperextensionExerciseName :: Kicks ) , 9 => Ok ( HyperextensionExerciseName :: WeightedKicks ) , 10 => Ok ( HyperextensionExerciseName :: KneeRaises ) , 11 => Ok ( HyperextensionExerciseName :: WeightedKneeRaises ) , 12 => Ok ( HyperextensionExerciseName :: KneelingSuperman ) , 13 => Ok ( HyperextensionExerciseName :: WeightedKneelingSuperman ) , 14 => Ok ( HyperextensionExerciseName :: LatPullDownWithRow ) , 15 => Ok ( HyperextensionExerciseName :: MedicineBallDeadliftToReach ) , 16 => Ok ( HyperextensionExerciseName :: OneArmOneLegRow ) , 17 => Ok ( HyperextensionExerciseName :: OneArmRowWithBand ) , 18 => Ok ( HyperextensionExerciseName :: OverheadLungeWithMedicineBall ) , 19 => Ok ( HyperextensionExerciseName :: PlankKneeTucks ) , 20 => Ok ( HyperextensionExerciseName :: WeightedPlankKneeTucks ) , 21 => Ok ( HyperextensionExerciseName :: SideStep ) , 22 => Ok ( HyperextensionExerciseName :: WeightedSideStep ) , 23 => Ok ( HyperextensionExerciseName :: SingleLegBackExtension ) , 24 => Ok ( HyperextensionExerciseName :: WeightedSingleLegBackExtension ) , 25 => Ok ( HyperextensionExerciseName :: SpineExtension ) , 26 => Ok ( HyperextensionExerciseName :: WeightedSpineExtension ) , 27 => Ok ( HyperextensionExerciseName :: StaticBackExtension ) , 28 => Ok ( HyperextensionExerciseName :: WeightedStaticBackExtension ) , 29 => Ok ( HyperextensionExerciseName :: SupermanFromFloor ) , 30 => Ok ( HyperextensionExerciseName :: WeightedSupermanFromFloor ) , 31 => Ok ( HyperextensionExerciseName :: SwissBallBackExtension ) , 32 => Ok ( HyperextensionExerciseName :: WeightedSwissBallBackExtension ) , 33 => Ok ( HyperextensionExerciseName :: SwissBallHyperextension ) , 34 => Ok ( HyperextensionExerciseName :: WeightedSwissBallHyperextension ) , 35 => Ok ( HyperextensionExerciseName :: SwissBallOppositeArmAndLegLift ) , 36 => Ok ( HyperextensionExerciseName :: WeightedSwissBallOppositeArmAndLegLift ) , _ => Ok ( HyperextensionExerciseName :: Unknown ) , }
+        match base_value . 0 { 0 => Ok ( HyperextensionExerciseName :: BackExtensionWithOppositeArmAndLegReach ) , 1 => Ok ( HyperextensionExerciseName :: WeightedBackExtensionWithOppositeArmAndLegReach ) , 2 => Ok ( HyperextensionExerciseName :: BaseRotations ) , 3 => Ok ( HyperextensionExerciseName :: WeightedBaseRotations ) , 4 => Ok ( HyperextensionExerciseName :: BentKneeReverseHyperextension ) , 5 => Ok ( HyperextensionExerciseName :: WeightedBentKneeReverseHyperextension ) , 6 => Ok ( HyperextensionExerciseName :: HollowHoldAndRoll ) , 7 => Ok ( HyperextensionExerciseName :: WeightedHollowHoldAndRoll ) , 8 => Ok ( HyperextensionExerciseName :: Kicks ) , 9 => Ok ( HyperextensionExerciseName :: WeightedKicks ) , 10 => Ok ( HyperextensionExerciseName :: KneeRaises ) , 11 => Ok ( HyperextensionExerciseName :: WeightedKneeRaises ) , 12 => Ok ( HyperextensionExerciseName :: KneelingSuperman ) , 13 => Ok ( HyperextensionExerciseName :: WeightedKneelingSuperman ) , 14 => Ok ( HyperextensionExerciseName :: LatPullDownWithRow ) , 15 => Ok ( HyperextensionExerciseName :: MedicineBallDeadliftToReach ) , 16 => Ok ( HyperextensionExerciseName :: OneArmOneLegRow ) , 17 => Ok ( HyperextensionExerciseName :: OneArmRowWithBand ) , 18 => Ok ( HyperextensionExerciseName :: OverheadLungeWithMedicineBall ) , 19 => Ok ( HyperextensionExerciseName :: PlankKneeTucks ) , 20 => Ok ( HyperextensionExerciseName :: WeightedPlankKneeTucks ) , 21 => Ok ( HyperextensionExerciseName :: SideStep ) , 22 => Ok ( HyperextensionExerciseName :: WeightedSideStep ) , 23 => Ok ( HyperextensionExerciseName :: SingleLegBackExtension ) , 24 => Ok ( HyperextensionExerciseName :: WeightedSingleLegBackExtension ) , 25 => Ok ( HyperextensionExerciseName :: SpineExtension ) , 26 => Ok ( HyperextensionExerciseName :: WeightedSpineExtension ) , 27 => Ok ( HyperextensionExerciseName :: StaticBackExtension ) , 28 => Ok ( HyperextensionExerciseName :: WeightedStaticBackExtension ) , 29 => Ok ( HyperextensionExerciseName :: SupermanFromFloor ) , 30 => Ok ( HyperextensionExerciseName :: WeightedSupermanFromFloor ) , 31 => Ok ( HyperextensionExerciseName :: SwissBallBackExtension ) , 32 => Ok ( HyperextensionExerciseName :: WeightedSwissBallBackExtension ) , 33 => Ok ( HyperextensionExerciseName :: SwissBallHyperextension ) , 34 => Ok ( HyperextensionExerciseName :: WeightedSwissBallHyperextension ) , 35 => Ok ( HyperextensionExerciseName :: SwissBallOppositeArmAndLegLift ) , 36 => Ok ( HyperextensionExerciseName :: WeightedSwissBallOppositeArmAndLegLift ) , 37 => Ok ( HyperextensionExerciseName :: SupermanOnSwissBall ) , 38 => Ok ( HyperextensionExerciseName :: Cobra ) , 39 => Ok ( HyperextensionExerciseName :: SupineFloorBarre ) , _ => Ok ( HyperextensionExerciseName :: Unknown ) , }
     }
 }
 #[derive(Debug)]
@@ -6260,6 +6348,8 @@ pub enum LateralRaiseExerciseName {
     UnderhandGripRearLateralRaise = 29,
     WallSlide = 30,
     WeightedWallSlide = 31,
+    ArmCircles = 32,
+    ShavingTheHead = 33,
     Unknown,
 }
 impl LateralRaiseExerciseName {
@@ -6302,6 +6392,8 @@ impl LateralRaiseExerciseName {
             29 => Ok(LateralRaiseExerciseName::UnderhandGripRearLateralRaise),
             30 => Ok(LateralRaiseExerciseName::WallSlide),
             31 => Ok(LateralRaiseExerciseName::WeightedWallSlide),
+            32 => Ok(LateralRaiseExerciseName::ArmCircles),
+            33 => Ok(LateralRaiseExerciseName::ShavingTheHead),
             _ => Ok(LateralRaiseExerciseName::Unknown),
         }
     }
@@ -6673,12 +6765,19 @@ pub enum PlankExerciseName {
     WeightedMountainClimberWithHandsOnBench = 125,
     WeightedSwissBallPlankLegLiftAndHold = 126,
     WeightedWideStancePlankWithOppositeArmAndLegLift = 127,
+    PlankWithFeetOnSwissBall = 128,
+    SidePlankToPlankWithReachUnder = 129,
+    BridgeWithGluteLowerLift = 130,
+    BridgeOneLegBridge = 131,
+    PlankWithArmVariations = 132,
+    PlankWithLegLift = 133,
+    ReversePlankWithLegPull = 134,
     Unknown,
 }
 impl PlankExerciseName {
     pub(crate) fn decode<T: ByteOrder>(buffer: &[u8]) -> error::Result<Self> {
         let base_value = profile::base::Uint16::decode::<T>(buffer)?;
-        match base_value . 0 { 0 => Ok ( PlankExerciseName :: FourtyFiveDegreePlank ) , 1 => Ok ( PlankExerciseName :: Weighted45DegreePlank ) , 2 => Ok ( PlankExerciseName :: NinetyDegreeStaticHold ) , 3 => Ok ( PlankExerciseName :: Weighted90DegreeStaticHold ) , 4 => Ok ( PlankExerciseName :: BearCrawl ) , 5 => Ok ( PlankExerciseName :: WeightedBearCrawl ) , 6 => Ok ( PlankExerciseName :: CrossBodyMountainClimber ) , 7 => Ok ( PlankExerciseName :: WeightedCrossBodyMountainClimber ) , 8 => Ok ( PlankExerciseName :: ElbowPlankPikeJacks ) , 9 => Ok ( PlankExerciseName :: WeightedElbowPlankPikeJacks ) , 10 => Ok ( PlankExerciseName :: ElevatedFeetPlank ) , 11 => Ok ( PlankExerciseName :: WeightedElevatedFeetPlank ) , 12 => Ok ( PlankExerciseName :: ElevatorAbs ) , 13 => Ok ( PlankExerciseName :: WeightedElevatorAbs ) , 14 => Ok ( PlankExerciseName :: ExtendedPlank ) , 15 => Ok ( PlankExerciseName :: WeightedExtendedPlank ) , 16 => Ok ( PlankExerciseName :: FullPlankPasseTwist ) , 17 => Ok ( PlankExerciseName :: WeightedFullPlankPasseTwist ) , 18 => Ok ( PlankExerciseName :: InchingElbowPlank ) , 19 => Ok ( PlankExerciseName :: WeightedInchingElbowPlank ) , 20 => Ok ( PlankExerciseName :: InchwormToSidePlank ) , 21 => Ok ( PlankExerciseName :: WeightedInchwormToSidePlank ) , 22 => Ok ( PlankExerciseName :: KneelingPlank ) , 23 => Ok ( PlankExerciseName :: WeightedKneelingPlank ) , 24 => Ok ( PlankExerciseName :: KneelingSidePlankWithLegLift ) , 25 => Ok ( PlankExerciseName :: WeightedKneelingSidePlankWithLegLift ) , 26 => Ok ( PlankExerciseName :: LateralRoll ) , 27 => Ok ( PlankExerciseName :: WeightedLateralRoll ) , 28 => Ok ( PlankExerciseName :: LyingReversePlank ) , 29 => Ok ( PlankExerciseName :: WeightedLyingReversePlank ) , 30 => Ok ( PlankExerciseName :: MedicineBallMountainClimber ) , 31 => Ok ( PlankExerciseName :: WeightedMedicineBallMountainClimber ) , 32 => Ok ( PlankExerciseName :: ModifiedMountainClimberAndExtension ) , 33 => Ok ( PlankExerciseName :: WeightedModifiedMountainClimberAndExtension ) , 34 => Ok ( PlankExerciseName :: MountainClimber ) , 35 => Ok ( PlankExerciseName :: WeightedMountainClimber ) , 36 => Ok ( PlankExerciseName :: MountainClimberOnSlidingDiscs ) , 37 => Ok ( PlankExerciseName :: WeightedMountainClimberOnSlidingDiscs ) , 38 => Ok ( PlankExerciseName :: MountainClimberWithFeetOnBosuBall ) , 39 => Ok ( PlankExerciseName :: WeightedMountainClimberWithFeetOnBosuBall ) , 40 => Ok ( PlankExerciseName :: MountainClimberWithHandsOnBench ) , 41 => Ok ( PlankExerciseName :: MountainClimberWithHandsOnSwissBall ) , 42 => Ok ( PlankExerciseName :: WeightedMountainClimberWithHandsOnSwissBall ) , 43 => Ok ( PlankExerciseName :: Plank ) , 44 => Ok ( PlankExerciseName :: PlankJacksWithFeetOnSlidingDiscs ) , 45 => Ok ( PlankExerciseName :: WeightedPlankJacksWithFeetOnSlidingDiscs ) , 46 => Ok ( PlankExerciseName :: PlankKneeTwist ) , 47 => Ok ( PlankExerciseName :: WeightedPlankKneeTwist ) , 48 => Ok ( PlankExerciseName :: PlankPikeJumps ) , 49 => Ok ( PlankExerciseName :: WeightedPlankPikeJumps ) , 50 => Ok ( PlankExerciseName :: PlankPikes ) , 51 => Ok ( PlankExerciseName :: WeightedPlankPikes ) , 52 => Ok ( PlankExerciseName :: PlankToStandUp ) , 53 => Ok ( PlankExerciseName :: WeightedPlankToStandUp ) , 54 => Ok ( PlankExerciseName :: PlankWithArmRaise ) , 55 => Ok ( PlankExerciseName :: WeightedPlankWithArmRaise ) , 56 => Ok ( PlankExerciseName :: PlankWithKneeToElbow ) , 57 => Ok ( PlankExerciseName :: WeightedPlankWithKneeToElbow ) , 58 => Ok ( PlankExerciseName :: PlankWithObliqueCrunch ) , 59 => Ok ( PlankExerciseName :: WeightedPlankWithObliqueCrunch ) , 60 => Ok ( PlankExerciseName :: PlyometricSidePlank ) , 61 => Ok ( PlankExerciseName :: WeightedPlyometricSidePlank ) , 62 => Ok ( PlankExerciseName :: RollingSidePlank ) , 63 => Ok ( PlankExerciseName :: WeightedRollingSidePlank ) , 64 => Ok ( PlankExerciseName :: SideKickPlank ) , 65 => Ok ( PlankExerciseName :: WeightedSideKickPlank ) , 66 => Ok ( PlankExerciseName :: SidePlank ) , 67 => Ok ( PlankExerciseName :: WeightedSidePlank ) , 68 => Ok ( PlankExerciseName :: SidePlankAndRow ) , 69 => Ok ( PlankExerciseName :: WeightedSidePlankAndRow ) , 70 => Ok ( PlankExerciseName :: SidePlankLift ) , 71 => Ok ( PlankExerciseName :: WeightedSidePlankLift ) , 72 => Ok ( PlankExerciseName :: SidePlankWithElbowOnBosuBall ) , 73 => Ok ( PlankExerciseName :: WeightedSidePlankWithElbowOnBosuBall ) , 74 => Ok ( PlankExerciseName :: SidePlankWithFeetOnBench ) , 75 => Ok ( PlankExerciseName :: WeightedSidePlankWithFeetOnBench ) , 76 => Ok ( PlankExerciseName :: SidePlankWithKneeCircle ) , 77 => Ok ( PlankExerciseName :: WeightedSidePlankWithKneeCircle ) , 78 => Ok ( PlankExerciseName :: SidePlankWithKneeTuck ) , 79 => Ok ( PlankExerciseName :: WeightedSidePlankWithKneeTuck ) , 80 => Ok ( PlankExerciseName :: SidePlankWithLegLift ) , 81 => Ok ( PlankExerciseName :: WeightedSidePlankWithLegLift ) , 82 => Ok ( PlankExerciseName :: SidePlankWithReachUnder ) , 83 => Ok ( PlankExerciseName :: WeightedSidePlankWithReachUnder ) , 84 => Ok ( PlankExerciseName :: SingleLegElevatedFeetPlank ) , 85 => Ok ( PlankExerciseName :: WeightedSingleLegElevatedFeetPlank ) , 86 => Ok ( PlankExerciseName :: SingleLegFlexAndExtend ) , 87 => Ok ( PlankExerciseName :: WeightedSingleLegFlexAndExtend ) , 88 => Ok ( PlankExerciseName :: SingleLegSidePlank ) , 89 => Ok ( PlankExerciseName :: WeightedSingleLegSidePlank ) , 90 => Ok ( PlankExerciseName :: SpidermanPlank ) , 91 => Ok ( PlankExerciseName :: WeightedSpidermanPlank ) , 92 => Ok ( PlankExerciseName :: StraightArmPlank ) , 93 => Ok ( PlankExerciseName :: WeightedStraightArmPlank ) , 94 => Ok ( PlankExerciseName :: StraightArmPlankWithShoulderTouch ) , 95 => Ok ( PlankExerciseName :: WeightedStraightArmPlankWithShoulderTouch ) , 96 => Ok ( PlankExerciseName :: SwissBallPlank ) , 97 => Ok ( PlankExerciseName :: WeightedSwissBallPlank ) , 98 => Ok ( PlankExerciseName :: SwissBallPlankLegLift ) , 99 => Ok ( PlankExerciseName :: WeightedSwissBallPlankLegLift ) , 100 => Ok ( PlankExerciseName :: SwissBallPlankLegLiftAndHold ) , 101 => Ok ( PlankExerciseName :: SwissBallPlankWithFeetOnBench ) , 102 => Ok ( PlankExerciseName :: WeightedSwissBallPlankWithFeetOnBench ) , 103 => Ok ( PlankExerciseName :: SwissBallProneJackknife ) , 104 => Ok ( PlankExerciseName :: WeightedSwissBallProneJackknife ) , 105 => Ok ( PlankExerciseName :: SwissBallSidePlank ) , 106 => Ok ( PlankExerciseName :: WeightedSwissBallSidePlank ) , 107 => Ok ( PlankExerciseName :: ThreeWayPlank ) , 108 => Ok ( PlankExerciseName :: WeightedThreeWayPlank ) , 109 => Ok ( PlankExerciseName :: TowelPlankAndKneeIn ) , 110 => Ok ( PlankExerciseName :: WeightedTowelPlankAndKneeIn ) , 111 => Ok ( PlankExerciseName :: TStabilization ) , 112 => Ok ( PlankExerciseName :: WeightedTStabilization ) , 113 => Ok ( PlankExerciseName :: TurkishGetUpToSidePlank ) , 114 => Ok ( PlankExerciseName :: WeightedTurkishGetUpToSidePlank ) , 115 => Ok ( PlankExerciseName :: TwoPointPlank ) , 116 => Ok ( PlankExerciseName :: WeightedTwoPointPlank ) , 117 => Ok ( PlankExerciseName :: WeightedPlank ) , 118 => Ok ( PlankExerciseName :: WideStancePlankWithDiagonalArmLift ) , 119 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithDiagonalArmLift ) , 120 => Ok ( PlankExerciseName :: WideStancePlankWithDiagonalLegLift ) , 121 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithDiagonalLegLift ) , 122 => Ok ( PlankExerciseName :: WideStancePlankWithLegLift ) , 123 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithLegLift ) , 124 => Ok ( PlankExerciseName :: WideStancePlankWithOppositeArmAndLegLift ) , 125 => Ok ( PlankExerciseName :: WeightedMountainClimberWithHandsOnBench ) , 126 => Ok ( PlankExerciseName :: WeightedSwissBallPlankLegLiftAndHold ) , 127 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithOppositeArmAndLegLift ) , _ => Ok ( PlankExerciseName :: Unknown ) , }
+        match base_value . 0 { 0 => Ok ( PlankExerciseName :: FourtyFiveDegreePlank ) , 1 => Ok ( PlankExerciseName :: Weighted45DegreePlank ) , 2 => Ok ( PlankExerciseName :: NinetyDegreeStaticHold ) , 3 => Ok ( PlankExerciseName :: Weighted90DegreeStaticHold ) , 4 => Ok ( PlankExerciseName :: BearCrawl ) , 5 => Ok ( PlankExerciseName :: WeightedBearCrawl ) , 6 => Ok ( PlankExerciseName :: CrossBodyMountainClimber ) , 7 => Ok ( PlankExerciseName :: WeightedCrossBodyMountainClimber ) , 8 => Ok ( PlankExerciseName :: ElbowPlankPikeJacks ) , 9 => Ok ( PlankExerciseName :: WeightedElbowPlankPikeJacks ) , 10 => Ok ( PlankExerciseName :: ElevatedFeetPlank ) , 11 => Ok ( PlankExerciseName :: WeightedElevatedFeetPlank ) , 12 => Ok ( PlankExerciseName :: ElevatorAbs ) , 13 => Ok ( PlankExerciseName :: WeightedElevatorAbs ) , 14 => Ok ( PlankExerciseName :: ExtendedPlank ) , 15 => Ok ( PlankExerciseName :: WeightedExtendedPlank ) , 16 => Ok ( PlankExerciseName :: FullPlankPasseTwist ) , 17 => Ok ( PlankExerciseName :: WeightedFullPlankPasseTwist ) , 18 => Ok ( PlankExerciseName :: InchingElbowPlank ) , 19 => Ok ( PlankExerciseName :: WeightedInchingElbowPlank ) , 20 => Ok ( PlankExerciseName :: InchwormToSidePlank ) , 21 => Ok ( PlankExerciseName :: WeightedInchwormToSidePlank ) , 22 => Ok ( PlankExerciseName :: KneelingPlank ) , 23 => Ok ( PlankExerciseName :: WeightedKneelingPlank ) , 24 => Ok ( PlankExerciseName :: KneelingSidePlankWithLegLift ) , 25 => Ok ( PlankExerciseName :: WeightedKneelingSidePlankWithLegLift ) , 26 => Ok ( PlankExerciseName :: LateralRoll ) , 27 => Ok ( PlankExerciseName :: WeightedLateralRoll ) , 28 => Ok ( PlankExerciseName :: LyingReversePlank ) , 29 => Ok ( PlankExerciseName :: WeightedLyingReversePlank ) , 30 => Ok ( PlankExerciseName :: MedicineBallMountainClimber ) , 31 => Ok ( PlankExerciseName :: WeightedMedicineBallMountainClimber ) , 32 => Ok ( PlankExerciseName :: ModifiedMountainClimberAndExtension ) , 33 => Ok ( PlankExerciseName :: WeightedModifiedMountainClimberAndExtension ) , 34 => Ok ( PlankExerciseName :: MountainClimber ) , 35 => Ok ( PlankExerciseName :: WeightedMountainClimber ) , 36 => Ok ( PlankExerciseName :: MountainClimberOnSlidingDiscs ) , 37 => Ok ( PlankExerciseName :: WeightedMountainClimberOnSlidingDiscs ) , 38 => Ok ( PlankExerciseName :: MountainClimberWithFeetOnBosuBall ) , 39 => Ok ( PlankExerciseName :: WeightedMountainClimberWithFeetOnBosuBall ) , 40 => Ok ( PlankExerciseName :: MountainClimberWithHandsOnBench ) , 41 => Ok ( PlankExerciseName :: MountainClimberWithHandsOnSwissBall ) , 42 => Ok ( PlankExerciseName :: WeightedMountainClimberWithHandsOnSwissBall ) , 43 => Ok ( PlankExerciseName :: Plank ) , 44 => Ok ( PlankExerciseName :: PlankJacksWithFeetOnSlidingDiscs ) , 45 => Ok ( PlankExerciseName :: WeightedPlankJacksWithFeetOnSlidingDiscs ) , 46 => Ok ( PlankExerciseName :: PlankKneeTwist ) , 47 => Ok ( PlankExerciseName :: WeightedPlankKneeTwist ) , 48 => Ok ( PlankExerciseName :: PlankPikeJumps ) , 49 => Ok ( PlankExerciseName :: WeightedPlankPikeJumps ) , 50 => Ok ( PlankExerciseName :: PlankPikes ) , 51 => Ok ( PlankExerciseName :: WeightedPlankPikes ) , 52 => Ok ( PlankExerciseName :: PlankToStandUp ) , 53 => Ok ( PlankExerciseName :: WeightedPlankToStandUp ) , 54 => Ok ( PlankExerciseName :: PlankWithArmRaise ) , 55 => Ok ( PlankExerciseName :: WeightedPlankWithArmRaise ) , 56 => Ok ( PlankExerciseName :: PlankWithKneeToElbow ) , 57 => Ok ( PlankExerciseName :: WeightedPlankWithKneeToElbow ) , 58 => Ok ( PlankExerciseName :: PlankWithObliqueCrunch ) , 59 => Ok ( PlankExerciseName :: WeightedPlankWithObliqueCrunch ) , 60 => Ok ( PlankExerciseName :: PlyometricSidePlank ) , 61 => Ok ( PlankExerciseName :: WeightedPlyometricSidePlank ) , 62 => Ok ( PlankExerciseName :: RollingSidePlank ) , 63 => Ok ( PlankExerciseName :: WeightedRollingSidePlank ) , 64 => Ok ( PlankExerciseName :: SideKickPlank ) , 65 => Ok ( PlankExerciseName :: WeightedSideKickPlank ) , 66 => Ok ( PlankExerciseName :: SidePlank ) , 67 => Ok ( PlankExerciseName :: WeightedSidePlank ) , 68 => Ok ( PlankExerciseName :: SidePlankAndRow ) , 69 => Ok ( PlankExerciseName :: WeightedSidePlankAndRow ) , 70 => Ok ( PlankExerciseName :: SidePlankLift ) , 71 => Ok ( PlankExerciseName :: WeightedSidePlankLift ) , 72 => Ok ( PlankExerciseName :: SidePlankWithElbowOnBosuBall ) , 73 => Ok ( PlankExerciseName :: WeightedSidePlankWithElbowOnBosuBall ) , 74 => Ok ( PlankExerciseName :: SidePlankWithFeetOnBench ) , 75 => Ok ( PlankExerciseName :: WeightedSidePlankWithFeetOnBench ) , 76 => Ok ( PlankExerciseName :: SidePlankWithKneeCircle ) , 77 => Ok ( PlankExerciseName :: WeightedSidePlankWithKneeCircle ) , 78 => Ok ( PlankExerciseName :: SidePlankWithKneeTuck ) , 79 => Ok ( PlankExerciseName :: WeightedSidePlankWithKneeTuck ) , 80 => Ok ( PlankExerciseName :: SidePlankWithLegLift ) , 81 => Ok ( PlankExerciseName :: WeightedSidePlankWithLegLift ) , 82 => Ok ( PlankExerciseName :: SidePlankWithReachUnder ) , 83 => Ok ( PlankExerciseName :: WeightedSidePlankWithReachUnder ) , 84 => Ok ( PlankExerciseName :: SingleLegElevatedFeetPlank ) , 85 => Ok ( PlankExerciseName :: WeightedSingleLegElevatedFeetPlank ) , 86 => Ok ( PlankExerciseName :: SingleLegFlexAndExtend ) , 87 => Ok ( PlankExerciseName :: WeightedSingleLegFlexAndExtend ) , 88 => Ok ( PlankExerciseName :: SingleLegSidePlank ) , 89 => Ok ( PlankExerciseName :: WeightedSingleLegSidePlank ) , 90 => Ok ( PlankExerciseName :: SpidermanPlank ) , 91 => Ok ( PlankExerciseName :: WeightedSpidermanPlank ) , 92 => Ok ( PlankExerciseName :: StraightArmPlank ) , 93 => Ok ( PlankExerciseName :: WeightedStraightArmPlank ) , 94 => Ok ( PlankExerciseName :: StraightArmPlankWithShoulderTouch ) , 95 => Ok ( PlankExerciseName :: WeightedStraightArmPlankWithShoulderTouch ) , 96 => Ok ( PlankExerciseName :: SwissBallPlank ) , 97 => Ok ( PlankExerciseName :: WeightedSwissBallPlank ) , 98 => Ok ( PlankExerciseName :: SwissBallPlankLegLift ) , 99 => Ok ( PlankExerciseName :: WeightedSwissBallPlankLegLift ) , 100 => Ok ( PlankExerciseName :: SwissBallPlankLegLiftAndHold ) , 101 => Ok ( PlankExerciseName :: SwissBallPlankWithFeetOnBench ) , 102 => Ok ( PlankExerciseName :: WeightedSwissBallPlankWithFeetOnBench ) , 103 => Ok ( PlankExerciseName :: SwissBallProneJackknife ) , 104 => Ok ( PlankExerciseName :: WeightedSwissBallProneJackknife ) , 105 => Ok ( PlankExerciseName :: SwissBallSidePlank ) , 106 => Ok ( PlankExerciseName :: WeightedSwissBallSidePlank ) , 107 => Ok ( PlankExerciseName :: ThreeWayPlank ) , 108 => Ok ( PlankExerciseName :: WeightedThreeWayPlank ) , 109 => Ok ( PlankExerciseName :: TowelPlankAndKneeIn ) , 110 => Ok ( PlankExerciseName :: WeightedTowelPlankAndKneeIn ) , 111 => Ok ( PlankExerciseName :: TStabilization ) , 112 => Ok ( PlankExerciseName :: WeightedTStabilization ) , 113 => Ok ( PlankExerciseName :: TurkishGetUpToSidePlank ) , 114 => Ok ( PlankExerciseName :: WeightedTurkishGetUpToSidePlank ) , 115 => Ok ( PlankExerciseName :: TwoPointPlank ) , 116 => Ok ( PlankExerciseName :: WeightedTwoPointPlank ) , 117 => Ok ( PlankExerciseName :: WeightedPlank ) , 118 => Ok ( PlankExerciseName :: WideStancePlankWithDiagonalArmLift ) , 119 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithDiagonalArmLift ) , 120 => Ok ( PlankExerciseName :: WideStancePlankWithDiagonalLegLift ) , 121 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithDiagonalLegLift ) , 122 => Ok ( PlankExerciseName :: WideStancePlankWithLegLift ) , 123 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithLegLift ) , 124 => Ok ( PlankExerciseName :: WideStancePlankWithOppositeArmAndLegLift ) , 125 => Ok ( PlankExerciseName :: WeightedMountainClimberWithHandsOnBench ) , 126 => Ok ( PlankExerciseName :: WeightedSwissBallPlankLegLiftAndHold ) , 127 => Ok ( PlankExerciseName :: WeightedWideStancePlankWithOppositeArmAndLegLift ) , 128 => Ok ( PlankExerciseName :: PlankWithFeetOnSwissBall ) , 129 => Ok ( PlankExerciseName :: SidePlankToPlankWithReachUnder ) , 130 => Ok ( PlankExerciseName :: BridgeWithGluteLowerLift ) , 131 => Ok ( PlankExerciseName :: BridgeOneLegBridge ) , 132 => Ok ( PlankExerciseName :: PlankWithArmVariations ) , 133 => Ok ( PlankExerciseName :: PlankWithLegLift ) , 134 => Ok ( PlankExerciseName :: ReversePlankWithLegPull ) , _ => Ok ( PlankExerciseName :: Unknown ) , }
     }
 }
 #[derive(Debug)]
@@ -6929,6 +7028,7 @@ pub enum PushUpExerciseName {
     RingPushUp = 75,
     WeightedRingPushUp = 76,
     PushUp = 77,
+    PilatesPushup = 78,
     Unknown,
 }
 impl PushUpExerciseName {
@@ -7017,6 +7117,7 @@ impl PushUpExerciseName {
             75 => Ok(PushUpExerciseName::RingPushUp),
             76 => Ok(PushUpExerciseName::WeightedRingPushUp),
             77 => Ok(PushUpExerciseName::PushUp),
+            78 => Ok(PushUpExerciseName::PilatesPushup),
             _ => Ok(PushUpExerciseName::Unknown),
         }
     }
@@ -7403,101 +7504,17 @@ pub enum SquatExerciseName {
     WideStanceBarbellSquat = 84,
     WideStanceGobletSquat = 85,
     ZercherSquat = 86,
+    KbsOverhead = 87,
+    SquatAndSideKick = 88,
+    SquatJumpsInNOut = 89,
+    PilatesPlieSquatsParallelTurnedOutFlatAndHeels = 90,
+    ReleveStraightLegAndKneeBentWithOneLegVariation = 91,
     Unknown,
 }
 impl SquatExerciseName {
     pub(crate) fn decode<T: ByteOrder>(buffer: &[u8]) -> error::Result<Self> {
         let base_value = profile::base::Uint16::decode::<T>(buffer)?;
-        match base_value.0 {
-            0 => Ok(SquatExerciseName::LegPress),
-            1 => Ok(SquatExerciseName::BackSquatWithBodyBar),
-            2 => Ok(SquatExerciseName::BackSquats),
-            3 => Ok(SquatExerciseName::WeightedBackSquats),
-            4 => Ok(SquatExerciseName::BalancingSquat),
-            5 => Ok(SquatExerciseName::WeightedBalancingSquat),
-            6 => Ok(SquatExerciseName::BarbellBackSquat),
-            7 => Ok(SquatExerciseName::BarbellBoxSquat),
-            8 => Ok(SquatExerciseName::BarbellFrontSquat),
-            9 => Ok(SquatExerciseName::BarbellHackSquat),
-            10 => Ok(SquatExerciseName::BarbellHangSquatSnatch),
-            11 => Ok(SquatExerciseName::BarbellLateralStepUp),
-            12 => Ok(SquatExerciseName::BarbellQuarterSquat),
-            13 => Ok(SquatExerciseName::BarbellSiffSquat),
-            14 => Ok(SquatExerciseName::BarbellSquatSnatch),
-            15 => Ok(SquatExerciseName::BarbellSquatWithHeelsRaised),
-            16 => Ok(SquatExerciseName::BarbellStepover),
-            17 => Ok(SquatExerciseName::BarbellStepUp),
-            18 => Ok(SquatExerciseName::BenchSquatWithRotationalChop),
-            19 => Ok(SquatExerciseName::WeightedBenchSquatWithRotationalChop),
-            20 => Ok(SquatExerciseName::BodyWeightWallSquat),
-            21 => Ok(SquatExerciseName::WeightedWallSquat),
-            22 => Ok(SquatExerciseName::BoxStepSquat),
-            23 => Ok(SquatExerciseName::WeightedBoxStepSquat),
-            24 => Ok(SquatExerciseName::BracedSquat),
-            25 => Ok(SquatExerciseName::CrossedArmBarbellFrontSquat),
-            26 => Ok(SquatExerciseName::CrossoverDumbbellStepUp),
-            27 => Ok(SquatExerciseName::DumbbellFrontSquat),
-            28 => Ok(SquatExerciseName::DumbbellSplitSquat),
-            29 => Ok(SquatExerciseName::DumbbellSquat),
-            30 => Ok(SquatExerciseName::DumbbellSquatClean),
-            31 => Ok(SquatExerciseName::DumbbellStepover),
-            32 => Ok(SquatExerciseName::DumbbellStepUp),
-            33 => Ok(SquatExerciseName::ElevatedSingleLegSquat),
-            34 => Ok(SquatExerciseName::WeightedElevatedSingleLegSquat),
-            35 => Ok(SquatExerciseName::FigureFourSquats),
-            36 => Ok(SquatExerciseName::WeightedFigureFourSquats),
-            37 => Ok(SquatExerciseName::GobletSquat),
-            38 => Ok(SquatExerciseName::KettlebellSquat),
-            39 => Ok(SquatExerciseName::KettlebellSwingOverhead),
-            40 => Ok(SquatExerciseName::KettlebellSwingWithFlipToSquat),
-            41 => Ok(SquatExerciseName::LateralDumbbellStepUp),
-            42 => Ok(SquatExerciseName::OneLeggedSquat),
-            43 => Ok(SquatExerciseName::OverheadDumbbellSquat),
-            44 => Ok(SquatExerciseName::OverheadSquat),
-            45 => Ok(SquatExerciseName::PartialSingleLegSquat),
-            46 => Ok(SquatExerciseName::WeightedPartialSingleLegSquat),
-            47 => Ok(SquatExerciseName::PistolSquat),
-            48 => Ok(SquatExerciseName::WeightedPistolSquat),
-            49 => Ok(SquatExerciseName::PlieSlides),
-            50 => Ok(SquatExerciseName::WeightedPlieSlides),
-            51 => Ok(SquatExerciseName::PlieSquat),
-            52 => Ok(SquatExerciseName::WeightedPlieSquat),
-            53 => Ok(SquatExerciseName::PrisonerSquat),
-            54 => Ok(SquatExerciseName::WeightedPrisonerSquat),
-            55 => Ok(SquatExerciseName::SingleLegBenchGetUp),
-            56 => Ok(SquatExerciseName::WeightedSingleLegBenchGetUp),
-            57 => Ok(SquatExerciseName::SingleLegBenchSquat),
-            58 => Ok(SquatExerciseName::WeightedSingleLegBenchSquat),
-            59 => Ok(SquatExerciseName::SingleLegSquatOnSwissBall),
-            60 => Ok(SquatExerciseName::WeightedSingleLegSquatOnSwissBall),
-            61 => Ok(SquatExerciseName::Squat),
-            62 => Ok(SquatExerciseName::WeightedSquat),
-            63 => Ok(SquatExerciseName::SquatsWithBand),
-            64 => Ok(SquatExerciseName::StaggeredSquat),
-            65 => Ok(SquatExerciseName::WeightedStaggeredSquat),
-            66 => Ok(SquatExerciseName::StepUp),
-            67 => Ok(SquatExerciseName::WeightedStepUp),
-            68 => Ok(SquatExerciseName::SuitcaseSquats),
-            69 => Ok(SquatExerciseName::SumoSquat),
-            70 => Ok(SquatExerciseName::SumoSquatSlideIn),
-            71 => Ok(SquatExerciseName::WeightedSumoSquatSlideIn),
-            72 => Ok(SquatExerciseName::SumoSquatToHighPull),
-            73 => Ok(SquatExerciseName::SumoSquatToStand),
-            74 => Ok(SquatExerciseName::WeightedSumoSquatToStand),
-            75 => Ok(SquatExerciseName::SumoSquatWithRotation),
-            76 => Ok(SquatExerciseName::WeightedSumoSquatWithRotation),
-            77 => Ok(SquatExerciseName::SwissBallBodyWeightWallSquat),
-            78 => Ok(SquatExerciseName::WeightedSwissBallWallSquat),
-            79 => Ok(SquatExerciseName::Thrusters),
-            80 => Ok(SquatExerciseName::UnevenSquat),
-            81 => Ok(SquatExerciseName::WeightedUnevenSquat),
-            82 => Ok(SquatExerciseName::WaistSlimmingSquat),
-            83 => Ok(SquatExerciseName::WallBall),
-            84 => Ok(SquatExerciseName::WideStanceBarbellSquat),
-            85 => Ok(SquatExerciseName::WideStanceGobletSquat),
-            86 => Ok(SquatExerciseName::ZercherSquat),
-            _ => Ok(SquatExerciseName::Unknown),
-        }
+        match base_value . 0 { 0 => Ok ( SquatExerciseName :: LegPress ) , 1 => Ok ( SquatExerciseName :: BackSquatWithBodyBar ) , 2 => Ok ( SquatExerciseName :: BackSquats ) , 3 => Ok ( SquatExerciseName :: WeightedBackSquats ) , 4 => Ok ( SquatExerciseName :: BalancingSquat ) , 5 => Ok ( SquatExerciseName :: WeightedBalancingSquat ) , 6 => Ok ( SquatExerciseName :: BarbellBackSquat ) , 7 => Ok ( SquatExerciseName :: BarbellBoxSquat ) , 8 => Ok ( SquatExerciseName :: BarbellFrontSquat ) , 9 => Ok ( SquatExerciseName :: BarbellHackSquat ) , 10 => Ok ( SquatExerciseName :: BarbellHangSquatSnatch ) , 11 => Ok ( SquatExerciseName :: BarbellLateralStepUp ) , 12 => Ok ( SquatExerciseName :: BarbellQuarterSquat ) , 13 => Ok ( SquatExerciseName :: BarbellSiffSquat ) , 14 => Ok ( SquatExerciseName :: BarbellSquatSnatch ) , 15 => Ok ( SquatExerciseName :: BarbellSquatWithHeelsRaised ) , 16 => Ok ( SquatExerciseName :: BarbellStepover ) , 17 => Ok ( SquatExerciseName :: BarbellStepUp ) , 18 => Ok ( SquatExerciseName :: BenchSquatWithRotationalChop ) , 19 => Ok ( SquatExerciseName :: WeightedBenchSquatWithRotationalChop ) , 20 => Ok ( SquatExerciseName :: BodyWeightWallSquat ) , 21 => Ok ( SquatExerciseName :: WeightedWallSquat ) , 22 => Ok ( SquatExerciseName :: BoxStepSquat ) , 23 => Ok ( SquatExerciseName :: WeightedBoxStepSquat ) , 24 => Ok ( SquatExerciseName :: BracedSquat ) , 25 => Ok ( SquatExerciseName :: CrossedArmBarbellFrontSquat ) , 26 => Ok ( SquatExerciseName :: CrossoverDumbbellStepUp ) , 27 => Ok ( SquatExerciseName :: DumbbellFrontSquat ) , 28 => Ok ( SquatExerciseName :: DumbbellSplitSquat ) , 29 => Ok ( SquatExerciseName :: DumbbellSquat ) , 30 => Ok ( SquatExerciseName :: DumbbellSquatClean ) , 31 => Ok ( SquatExerciseName :: DumbbellStepover ) , 32 => Ok ( SquatExerciseName :: DumbbellStepUp ) , 33 => Ok ( SquatExerciseName :: ElevatedSingleLegSquat ) , 34 => Ok ( SquatExerciseName :: WeightedElevatedSingleLegSquat ) , 35 => Ok ( SquatExerciseName :: FigureFourSquats ) , 36 => Ok ( SquatExerciseName :: WeightedFigureFourSquats ) , 37 => Ok ( SquatExerciseName :: GobletSquat ) , 38 => Ok ( SquatExerciseName :: KettlebellSquat ) , 39 => Ok ( SquatExerciseName :: KettlebellSwingOverhead ) , 40 => Ok ( SquatExerciseName :: KettlebellSwingWithFlipToSquat ) , 41 => Ok ( SquatExerciseName :: LateralDumbbellStepUp ) , 42 => Ok ( SquatExerciseName :: OneLeggedSquat ) , 43 => Ok ( SquatExerciseName :: OverheadDumbbellSquat ) , 44 => Ok ( SquatExerciseName :: OverheadSquat ) , 45 => Ok ( SquatExerciseName :: PartialSingleLegSquat ) , 46 => Ok ( SquatExerciseName :: WeightedPartialSingleLegSquat ) , 47 => Ok ( SquatExerciseName :: PistolSquat ) , 48 => Ok ( SquatExerciseName :: WeightedPistolSquat ) , 49 => Ok ( SquatExerciseName :: PlieSlides ) , 50 => Ok ( SquatExerciseName :: WeightedPlieSlides ) , 51 => Ok ( SquatExerciseName :: PlieSquat ) , 52 => Ok ( SquatExerciseName :: WeightedPlieSquat ) , 53 => Ok ( SquatExerciseName :: PrisonerSquat ) , 54 => Ok ( SquatExerciseName :: WeightedPrisonerSquat ) , 55 => Ok ( SquatExerciseName :: SingleLegBenchGetUp ) , 56 => Ok ( SquatExerciseName :: WeightedSingleLegBenchGetUp ) , 57 => Ok ( SquatExerciseName :: SingleLegBenchSquat ) , 58 => Ok ( SquatExerciseName :: WeightedSingleLegBenchSquat ) , 59 => Ok ( SquatExerciseName :: SingleLegSquatOnSwissBall ) , 60 => Ok ( SquatExerciseName :: WeightedSingleLegSquatOnSwissBall ) , 61 => Ok ( SquatExerciseName :: Squat ) , 62 => Ok ( SquatExerciseName :: WeightedSquat ) , 63 => Ok ( SquatExerciseName :: SquatsWithBand ) , 64 => Ok ( SquatExerciseName :: StaggeredSquat ) , 65 => Ok ( SquatExerciseName :: WeightedStaggeredSquat ) , 66 => Ok ( SquatExerciseName :: StepUp ) , 67 => Ok ( SquatExerciseName :: WeightedStepUp ) , 68 => Ok ( SquatExerciseName :: SuitcaseSquats ) , 69 => Ok ( SquatExerciseName :: SumoSquat ) , 70 => Ok ( SquatExerciseName :: SumoSquatSlideIn ) , 71 => Ok ( SquatExerciseName :: WeightedSumoSquatSlideIn ) , 72 => Ok ( SquatExerciseName :: SumoSquatToHighPull ) , 73 => Ok ( SquatExerciseName :: SumoSquatToStand ) , 74 => Ok ( SquatExerciseName :: WeightedSumoSquatToStand ) , 75 => Ok ( SquatExerciseName :: SumoSquatWithRotation ) , 76 => Ok ( SquatExerciseName :: WeightedSumoSquatWithRotation ) , 77 => Ok ( SquatExerciseName :: SwissBallBodyWeightWallSquat ) , 78 => Ok ( SquatExerciseName :: WeightedSwissBallWallSquat ) , 79 => Ok ( SquatExerciseName :: Thrusters ) , 80 => Ok ( SquatExerciseName :: UnevenSquat ) , 81 => Ok ( SquatExerciseName :: WeightedUnevenSquat ) , 82 => Ok ( SquatExerciseName :: WaistSlimmingSquat ) , 83 => Ok ( SquatExerciseName :: WallBall ) , 84 => Ok ( SquatExerciseName :: WideStanceBarbellSquat ) , 85 => Ok ( SquatExerciseName :: WideStanceGobletSquat ) , 86 => Ok ( SquatExerciseName :: ZercherSquat ) , 87 => Ok ( SquatExerciseName :: KbsOverhead ) , 88 => Ok ( SquatExerciseName :: SquatAndSideKick ) , 89 => Ok ( SquatExerciseName :: SquatJumpsInNOut ) , 90 => Ok ( SquatExerciseName :: PilatesPlieSquatsParallelTurnedOutFlatAndHeels ) , 91 => Ok ( SquatExerciseName :: ReleveStraightLegAndKneeBentWithOneLegVariation ) , _ => Ok ( SquatExerciseName :: Unknown ) , }
     }
 }
 #[derive(Debug)]
@@ -7765,6 +7782,22 @@ impl DiveBacklightMode {
             0 => Ok(DiveBacklightMode::AtDepth),
             1 => Ok(DiveBacklightMode::AlwaysOn),
             _ => Ok(DiveBacklightMode::Unknown),
+        }
+    }
+}
+#[derive(Debug)]
+pub enum FaveroProduct {
+    AssiomaUno = 10,
+    AssiomaDuo = 12,
+    Unknown,
+}
+impl FaveroProduct {
+    pub(crate) fn decode<T: ByteOrder>(buffer: &[u8]) -> error::Result<Self> {
+        let base_value = profile::base::Uint16::decode::<T>(buffer)?;
+        match base_value.0 {
+            10 => Ok(FaveroProduct::AssiomaUno),
+            12 => Ok(FaveroProduct::AssiomaDuo),
+            _ => Ok(FaveroProduct::Unknown),
         }
     }
 }
